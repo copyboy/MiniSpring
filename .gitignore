@@ -1,0 +1,14 @@
+.idea/*
+*.iml
+*/target/*
+.idea/
+*/rebel.xml
+/.settings/
+/.classpath
+#/.gitignore
+/.project
+/target/
+/temp/ehcache/*
+.settings/
+.project
+.classpath
