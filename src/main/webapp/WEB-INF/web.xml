@@ -15,7 +15,7 @@
     <servlet-class>com.zqd.framework.v1.MiniDispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextPath</param-name>
-      <param-value>application.properties</param-value>
+      <param-value>classpath:application.properties</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>

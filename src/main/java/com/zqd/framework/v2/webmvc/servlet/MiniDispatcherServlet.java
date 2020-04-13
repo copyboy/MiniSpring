@@ -1,6 +1,7 @@
-package com.zqd.framework.v2.webmvc;
+package com.zqd.framework.v2.webmvc.servlet;
 
 import com.zqd.framework.v2.annotation.*;
+import com.zqd.framework.v2.context.MiniApplicationContext;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -23,13 +24,15 @@ import java.util.*;
  */
 public class MiniDispatcherServlet extends HttpServlet {
 
-    private Properties contextConfig = new Properties();
+
 
     private List<String> classNames = new ArrayList<>();
 
     private Map<String, Object> ioc = new HashMap<>();
 
     private Map<String, Method> handlerMapping = new HashMap<>();
+
+    private MiniApplicationContext applicationContext;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,21 +56,23 @@ public class MiniDispatcherServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
 
-        // 1. 加载配置文件
-        doLoadConfig(config.getInitParameter("contextPath"));
+        applicationContext = new MiniApplicationContext(config.getInitParameter("contextPath"));
 
-        // 2. 扫描相关的类
-        doScanner(contextConfig.getProperty("scanPackage"));
-
-        // ==============IOC====================
-        // 3. IOC 容器初始化，并实例化保存
-        doInstance();
-
-        // ==============AOP====================
-
-        // ==============DI====================
-        // 4. 依赖注入
-        doAutowired();
+//        // 1. 加载配置文件
+//        doLoadConfig(config.getInitParameter("contextPath"));
+//
+//        // 2. 扫描相关的类
+//        doScanner(contextConfig.getProperty("scanPackage"));
+//
+//        // ==============IOC====================
+//        // 3. IOC 容器初始化，并实例化保存
+//        doInstance();
+//
+//        // ==============AOP====================
+//
+//        // ==============DI====================
+//        // 4. 依赖注入
+//        doAutowired();
 
         // ==============MVC====================
         // 5. 初始化HandlerMapping
@@ -274,41 +279,6 @@ public class MiniDispatcherServlet extends HttpServlet {
         return new String(name);
     }
 
-    private void doScanner(String scanPackage) {
-
-        URL url = this.getClass().getClassLoader().getResource("/" + scanPackage.replaceAll("\\.", "/"));
-        File classPath = new File(url.getFile());
-        for (File file : classPath.listFiles()) {
-            if (file.isDirectory()) {
-                doScanner(scanPackage+"."+file.getName());
-            } else {
-
-                if (!file.getName().endsWith(".class")) {continue;}
-
-                String className = scanPackage +"." + file.getName().replace(".class", "");
-                classNames.add(className);
-            }
-        }
 
 
-    }
-
-    private void doLoadConfig(String contextPath) {
-
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream(contextPath);
-
-        try {
-            contextConfig.load(is);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (null != is) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 }
