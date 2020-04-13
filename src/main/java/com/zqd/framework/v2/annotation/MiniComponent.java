@@ -1,16 +1,15 @@
-package com.zqd.annotation;
+package com.zqd.framework.v2.annotation;
 
 import java.lang.annotation.*;
 
 /**
  * @author qingdong.zhang
  * @version 1.0
- * @since 2020-3-30-23:31
+ * @since 2020-3-30-23:16
  */
-
-@Target({ElementType.FIELD})
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface MiniAutowired {
+public @interface MiniComponent {
     String value() default "";
 }

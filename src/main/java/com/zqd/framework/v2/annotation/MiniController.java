@@ -1,17 +1,18 @@
-package com.zqd.annotation;
+package com.zqd.framework.v2.annotation;
 
 import java.lang.annotation.*;
 
 /**
  * @author qingdong.zhang
  * @version 1.0
- * @since 2020-3-30-23:24
+ * @since 2020-3-30-23:14
  */
-@Target({ElementType.PARAMETER})
+
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface MiniRequestParam {
+@MiniComponent
+public @interface MiniController {
 
     String value() default "";
-
 }

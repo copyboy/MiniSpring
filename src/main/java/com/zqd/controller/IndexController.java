@@ -1,7 +1,7 @@
 package com.zqd.controller;
 
-import com.zqd.annotation.MiniController;
-import com.zqd.annotation.MiniRequestMapping;
+import com.zqd.framework.v2.annotation.MiniController;
+import com.zqd.framework.v2.annotation.MiniRequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

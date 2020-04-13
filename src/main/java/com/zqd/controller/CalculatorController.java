@@ -1,9 +1,9 @@
 package com.zqd.controller;
 
-import com.zqd.annotation.MiniAutowired;
-import com.zqd.annotation.MiniController;
-import com.zqd.annotation.MiniRequestMapping;
-import com.zqd.annotation.MiniRequestParam;
+import com.zqd.framework.v2.annotation.MiniAutowired;
+import com.zqd.framework.v2.annotation.MiniController;
+import com.zqd.framework.v2.annotation.MiniRequestMapping;
+import com.zqd.framework.v2.annotation.MiniRequestParam;
 import com.zqd.service.CalculatorService;
 
 import javax.servlet.http.HttpServletRequest;

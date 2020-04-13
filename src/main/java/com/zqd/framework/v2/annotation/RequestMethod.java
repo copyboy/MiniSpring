@@ -1,4 +1,4 @@
-package com.zqd.annotation;
+package com.zqd.framework.v2.annotation;
 
 /**
  * @author qingdong.zhang

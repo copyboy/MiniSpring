@@ -1,4 +1,4 @@
-package com.zqd.framework.v1;
+package com.zqd.framework.v2.webmvc;
 
 import com.zqd.framework.v2.annotation.*;
 

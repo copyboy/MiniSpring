@@ -1,6 +1,6 @@
 package com.zqd.service;
 
-import com.zqd.annotation.MiniService;
+import com.zqd.framework.v2.annotation.MiniService;
 
 /**
  * @author qingdong.zhang
